@@ -1,0 +1,33 @@
+{
+  "name": "docs.repeater.dev",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "webpack && postcss --verbose code/stylesheets/application.pcss -o publish/stylesheets/application.css",
+    "clean": "del 'publish/!(images|favicon.*)'",
+    "dev": "$npm_execpath serve & $npm_execpath watch",
+    "netlify": "$npm_execpath watch & netlify dev",
+    "rebuild": "$npm_execpath clean && $npm_execpath build",
+    "serve": "live-server --watch=./publish --mount=/:./publish --entry-file='publish/404.html'",
+    "watch": "webpack --watch & postcss --verbose code/stylesheets/application.pcss -o publish/stylesheets/application.css --watch"
+  },
+  "private": true,
+  "devDependencies": {
+    "del-cli": "^3.0.0",
+    "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.6",
+    "autoprefixer": "^9.7.4",
+    "cameronjs-html-webpack-plugin": "^0.5.0",
+    "postcss-cli": "^7.1.0",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^4.2.1",
+    "stimulus": "^1.1.1",
+    "tailwindcss": "^1.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "cameronjs": "^0.5.7"
+  }
+}

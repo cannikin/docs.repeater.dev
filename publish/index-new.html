@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>repeater.dev</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/application.css" />
+    <script type="text/javascript" src="/javascripts/application.js"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-700 font-sans antialiased h-full flex flex-col">
+    <div id="redwood-app" class="flex-auto">
+      <div class="h-full flex flex-col md:flex-row">
+        <aside class="w-full md:w-56 border-r px-4 md:px-8 pb-4 md:pb-0">
+          <header class="flex items-center justify-between md:justify-center m-4">
+            <a href="/"><img src="/images/logo.svg" class="w-16"></a>
+            <button class="md:hidden ml-2 bg-gray-700 text-xs text-white px-2 py-1 rounded">Log Out</button>
+          </header>
+          <nav>
+            <ul class="flex items-center justify-between md:block text-sm mt-8 md:mt-12 mb-6">
+              <li>
+                <a href="/applications" class="flex items-center active">
+                  <div class="icon w-6 mr-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                      <path d="M7 17h10V7H7v10zm2-8h6v6H9V9z" class="fill fill-current text-gray-400"></path>
+                      <path d="M21 11V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10zm-2-8H9v6h6V9zm-2 4h-2v-2h2v2z" class="outline fill-current text-gray-600"></path>
+                    </svg>
+                  </div>
+                  <span class="label text-gray-600 font-medium">Applications</span>
+                </a>
+              </li>
+              <li class="md:mt-4">
+                <a href="/jobs" class="flex items-center">
+                  <div class="icon w-6 mr-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                      <path d="M12 6c-3.86 0-7 3.14-7 7s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm3.75 10.85L11 14V8h1.5v5.25l4 2.37-.75 1.23z" class="fill fill-current text-gray-400"></path>
+                      <path d="M12.5 8H11v6l4.75 2.85.75-1.23-4-2.37zm4.837-6.19l4.607 3.845-1.28 1.535-4.61-3.843zm-10.674 0l1.282 1.536L3.337 7.19l-1.28-1.536zM12 4c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z" class="outline fill-current text-gray-600"></path>
+                    </svg>
+                  </div>
+                  <span class="label text-gray-600 font-medium">Jobs</span>
+                </a>
+              </li>
+              <li class="md:mt-4">
+                <a href="/job-results" class="flex items-center">
+                  <div class="icon w-6 mr-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M0 0h24v24H0V0z" fill="none"></path>
+                      <path d="M5 19h14V5H5v14zm2.41-7.41L10 14.17l6.59-6.59L18 9l-8 8-4-4 1.41-1.41z" class="fill fill-current text-gray-400"></path>
+                      <path d="M18 9l-1.41-1.42L10 14.17l-2.59-2.58L6 13l4 4zm1-6h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-.14 0-.27.01-.4.04-.39.08-.74.28-1.01.55-.18.18-.33.4-.43.64S3 4.72 3 5v14c0 .27.06.54.16.78s.25.45.43.64c.27.27.62.47 1.01.55.13.02.26.03.4.03h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7-.25c.41 0 .75.34.75.75s-.34.75-.75.75-.75-.34-.75-.75.34-.75.75-.75zM19 19H5V5h14v14z" class="outline fill-current text-gray-600"></path>
+                    </svg>
+                  </div>
+                  <span class="label text-gray-600 font-medium">Job Results</span>
+                </a>
+              </li>
+            </ul>
+            <hr>
+          </nav>
+        </aside>
+        <main class="flex-1 bg-white">
+          <header class="hidden md:flex items-center justify-end p-4 border-b">
+            <div class="text-sm">cannikinn@gmail.com</div>
+            <button class="ml-2 bg-gray-700 text-xs text-white px-2 py-1 rounded">Log Out</button>
+          </header>
+          <section class="p-4 md:p-8 relative">
+            <div class="flex justify-between items-center">
+              <h2 class="font-semibold text-2xl">Applications</h2>
+              <a href="/applications/new" class="bg-green-500 text-white font-bold px-3 py-1 text-sm rounded">+ New Application</a>
+            </div>
+            <div class="text-sm mt-8 overflow-y-scroll">
+              <div class="text-base text-center text-gray-500">No applications yet—you need an application before you can create a job. <a href="/applications/new">Let's add one!</a></div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
