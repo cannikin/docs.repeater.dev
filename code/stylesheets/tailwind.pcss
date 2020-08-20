@@ -36,8 +36,16 @@ img.screenshot {
   @apply my-12 border shadow-lg;
 }
 
+code {
+  @apply bg-gray-300 px-1 rounded
+}
+
 pre {
   @apply text-xs bg-gray-800 text-white p-4 rounded-lg overflow-x-scroll
+}
+
+pre code {
+  @apply bg-transparent
 }
 
 @screen md {
@@ -54,8 +62,16 @@ pre {
   }
 }
 
+.attributes-title {
+  @apply text-lg mt-8
+}
+
+table.attributes {
+  @apply mt-4
+}
+
 table.attributes tr {
-  @apply border-b
+  @apply border-t
 }
 
 table.attributes td {

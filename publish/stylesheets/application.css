@@ -22282,6 +22282,15 @@ img.screenshot {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+code {
+  --bg-opacity: 1;
+  background-color: #e2e8f0;
+  background-color: rgba(226, 232, 240, var(--bg-opacity));
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-radius: 0.25rem
+}
+
 pre {
   font-size: 0.75rem;
   --bg-opacity: 1;
@@ -22293,6 +22302,10 @@ pre {
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: scroll
+}
+
+pre code {
+  background-color: transparent
 }
 
 @media (min-width: 768px) {
@@ -22312,8 +22325,17 @@ pre {
   }
 }
 
+.attributes-title {
+  font-size: 1.125rem;
+  margin-top: 2rem
+}
+
+table.attributes {
+  margin-top: 1rem
+}
+
 table.attributes tr {
-  border-bottom-width: 1px
+  border-top-width: 1px
 }
 
 table.attributes td {
