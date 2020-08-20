@@ -22314,6 +22314,14 @@ pre code {
     align-items: flex-start;
   }
 
+  .subsection-container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-top-width: 1px;
+    display: flex;
+    align-items: flex-start
+  }
+
   .section-body {
     width: 50%;
     padding-right: 2rem;
@@ -22331,7 +22339,8 @@ pre code {
 }
 
 table.attributes {
-  margin-top: 1rem
+  margin-top: 1rem;
+  width: 100%
 }
 
 table.attributes tr {

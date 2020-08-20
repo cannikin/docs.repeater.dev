@@ -85,7 +85,8 @@
   <h2 class="text-2xl">Introduction</h2>
   <p>
     Repeater.dev lets you execute tasks at a predefined time (or on a recurring basis). Repeater is
-    accessed through a GraphQL API available at https://api.repeater.dev/graphql If you have a
+    accessed through a GraphQL API available at
+    <a href="https://api.repeater.dev/graphql">https://api.repeater.dev/graphql</a> If you have a
     client that is capable of doing so, you can issue an introspection query against that endpoint
     and receive a list of query and mutations that you can perform.
   </p>
@@ -163,49 +164,43 @@ https://api.repeater.dev/graphql</code></pre>
         Currently you can only create Applications via the <a href="https://repeater.dev">https://repeater.dev</a> UI.
         However you <em>can</em> request Application details as a field on other queries, like Jobs.
       </p>
-      <p>
+      <p id="applications-fields">
         <h3 class="attributes-title">Fields</h3>
         <table class="attributes">
           <tbody>
             <tr>
               <td>name</td>
               <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
                 Name of the application
               </td>
             </tr>
             <tr>
               <td>token</td>
               <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
                 Used to <a href="#authentication">authenticate</a> GraphQL requests.
               </td>
             </tr>
             <tr>
               <td>createdAt</td>
               <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
                 When this Application was created
               </td>
             </tr>
             <tr>
               <td>updatedAt</td>
               <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
                 When this application was last updated. Creating/updating Jobs for this Application also updates this value.
               </td>
             </tr>
             <tr>
               <td>jobsCount</td>
               <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
                 How many total Jobs belong to this Application
               </td>
             </tr>
             <tr>
               <td>scheduledJobsCount</td>
               <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
                 How many Jobs belongong to this application are scheduled to be run in the future
               </td>
             </tr>
@@ -249,6 +244,198 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>name</td>
               <td>
+                Unique name for this job
+              </td>
+            </tr>
+            <tr>
+              <td>enabled</td>
+              <td>
+                Whether this job is enabled and will run at the specified time(s)
+              </td>
+            </tr>
+            <tr>
+              <td>endpoint</td>
+              <td>
+                The URL that will be requested
+              </td>
+            </tr>
+            <tr>
+              <td>verb</td>
+              <td>
+                The HTTP verb to make the request with. One of GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+              </td>
+            </tr>
+            <tr>
+              <td>headers</td>
+              <td>
+                Javascript object containing any headers to set on the request
+              </td>
+            </tr>
+            <tr>
+              <td>body</td>
+              <td>
+                Any body to send along with the request
+              </td>
+            </tr>
+            <tr>
+              <td>retryable</td>
+              <td>
+                Whether the job should be retried if it fails. If so, the job is tried again on a backoff
+                schedule of N ** 4 seconds, where N is the number of previous attempts. Maximum of 24 retries.
+                If the job is recurring then retrying will follow this schedule, otherwise the next run
+                of a failed job will occur on the regular schedule.
+              </td>
+            </tr>
+            <tr>
+              <td>runAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the job should run. For recurring jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
+              </td>
+            </tr>
+            <tr>
+              <td>runEvery</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
+              </td>
+            </tr>
+            <tr>
+              <td>createdAt</td>
+              <td>
+                An ISO8601 timestamp of when the job was created.
+              </td>
+            </tr>
+            <tr>
+              <td>updatedAt</td>
+              <td>
+                An ISO8601 timestamp of when the job was last updated (when the job runs this value will be also be updated).
+              </td>
+            </tr>
+            <tr>
+              <td>lastRunAt</td>
+              <td>
+                The last time a Runner for this job was run. Will be <code>null</code> if the job has not run yet.
+              </td>
+            </tr>
+            <tr>
+              <td>nextRunAt</td>
+              <td>
+                An ISO8601 timestamp of when this job will run next. Will be <code>null</code> if the job is not <code>enabled</code> or has already run.
+              </td>
+            </tr>
+            <tr>
+              <td>successCount</td>
+              <td>
+                If any JobResults are present, the count that were successes (HTTP response code < 400)
+              </td>
+            </tr>
+            <tr>
+              <td>failureCount</td>
+              <td>
+                If any JobResults are present, the count that were failures (HTTP response code >= 400)
+              </td>
+            </tr>
+            <tr>
+              <td>application</td>
+              <td>
+                Details for the Application this job is attached to. See <a href="#applications-fields">Application fields</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>jobResults</td>
+              <td>
+                Details for the JobResults attached to this job. See <a href="#jobresults-fields">JobResult field</a>.
+              </td>
+            </tr>
+            <tr>
+              <td>runners</td>
+              <td>
+                Any Runners that are scheduled to run. See <a href="#runners-fields">Runner field</a>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </div>
+  </div>
+
+  <div id="jobs-jobs" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">jobs query</h2>
+      <p>
+        Returns all jobs for the application used to <a href="#authentication">authenticate</a>.
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>query {
+  jobs {
+    name
+    enabled
+    endpoint
+    verb
+    headers
+    body
+    retryable
+    runAt
+    runEvery
+    createdAt
+    updatedAt
+    lastRunAt
+    nextRunAt
+  }
+}</code></pre>
+      </p>
+    </aside>
+  </div>
+
+  <div id="jobs-job" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">job query</h2>
+      <p>
+        Returns details for the given Job <code>name</code>.
+      </p>
+      <p>
+        <h3 class="attributes-title">Arguments</h3>
+        <table class="attributes">
+          <tbody>
+            <tr>
+              <td>name</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                Name of the job
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>query {
+  job(name: "test-job-1") {
+    name
+    endpoint
+  }
+}</code></pre>
+      </p>
+    </aside>
+  </div>
+
+  <div id="jobs-createjob" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">createJob mutation</h2>
+      <p>
+        Creates a job. If a value is given for <code>runEvery</code> then the job will
+        run on that recurring schedule. Otherwise it will only run once at <code>runAt</code>
+      </p>
+      <p>
+        <h3 class="attributes-title">Fields</h3>
+        <table class="attributes">
+          <tbody>
+            <tr>
+              <td>name</td>
+              <td>
                 <span class="block text-xs text-gray-500">(required)</span>
                 Unique name for this job
               </td>
@@ -264,7 +451,7 @@ https://api.repeater.dev/graphql</code></pre>
               <td>endpoint</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                The URL that will be requested
+                The URL to request
               </td>
             </tr>
             <tr>
@@ -278,14 +465,14 @@ https://api.repeater.dev/graphql</code></pre>
               <td>headers</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                Javascript object containing any headers to set on the request
+                Any headers to send along with the request. Use stringified JSON, ie. <code>"{\"Content-Type\": \"application/json\"}"</code>
               </td>
             </tr>
             <tr>
               <td>body</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                Any body to send along with the request
+                Body content to send along with the request. If JSON, make sure to set a <code>Content-Type</code> header and stringify the body JSON.
               </td>
             </tr>
             <tr>
@@ -312,94 +499,95 @@ https://api.repeater.dev/graphql</code></pre>
                 An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
               </td>
             </tr>
-            <tr>
-              <td>createdAt</td>
-              <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
-                An ISO8601 timestamp of when the job was created.
-              </td>
-            </tr>
-            <tr>
-              <td>updatedAt</td>
-              <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
-                An ISO8601 timestamp of when the job was last updated (when the job runs this value will be also be updated).
-              </td>
-            </tr>
-            <tr>
-              <td>lastRunAt</td>
-              <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
-                The last time a Runner for this job was run. Will be <code>null</code> if the job has not run yet.
-              </td>
-            </tr>
-            <tr>
-              <td>nextRunAt</td>
-              <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
-                An ISO8601 timestamp of when this job will run next. Will be <code>null</code> if the job is not <code>enabled</code> or has already run.
-              </td>
-            </tr>
-            <tr>
-              <td>application</td>
-              <td>
-                <span class="block text-xs text-gray-500">(read-only)</span>
-                Details for the Application this job is attached to. See <a href="#applications-fields">Application field</a>.
-              </td>
-            </tr>
           </tbody>
         </table>
       </p>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>// query all jobs
-
-query {
-  jobs {
-    name
-    enabled
-    endpoint
-    verb
-    headers
-    body
-    retryable
-    runAt
-    runEvery
-    createdAt
-    updatedAt
-    lastRunAt
-    nextRunAt
-  }
-}</code></pre>
-      </p>
-      <p>
-        <pre><code>// query single job by name
-
-query {
-  job(name: "test-job-1") {
-    name
-    endpoint
-  }
-}</code></pre>
-      </p>
-      <p>
-        <pre><code>// create a job
-
-mutation {
+        <pre><code>mutation {
   createJob(
     name: "test-job-1"
     endpoint: "https://myapp.com/api/sendEmail"
     verb: "post"
     runAt: "2020-07-24T22:00:00Z"
+    headers: "{\"Content-Type\": \"application/json\"}"
     body: "{\"foo\":\"bar\"}"
   ) {
     name
   }
 }</code></pre>
-        </p>
-    </aside>
+    </p>
   </div>
+
+  <div id="jobs-updatejob" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">updateJob mutation</h2>
+      <p>
+        Updates a job. Any existing runners will be canceled and re-scheduled with the new <code>runAt</code>
+        and <code>runEvery</code> arguments.
+      </p>
+      <p>
+        Note that you cannot change the name of a Job—updating a Job first looks up the Job by
+        the provided <code>name</code> argument and that's the one that is updated. The equivalent
+        of renaming a job would be to to delete the existing one and create a new one with the new name.
+      </p>
+      <p>
+        <h3 class="attributes-title">Arguments</h3>
+        <p>
+          Same as <a href="#jobs-createjob">createJob</a> attributes except that all attributes are optional except <code>name</code>.
+        </p>
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>mutation {
+  updateJob(
+    name: "test-job-1"
+    endpoint: "https://myapp.com/api/sendEmail"
+    verb: "post"
+    runAt: "2020-07-24T22:00:00Z"
+    headers: "{\"Content-Type\": \"application/json\"}"
+    body: "{\"foo\":\"bar\"}"
+  ) {
+    name
+  }
+}</code></pre>
+    </p>
+  </div>
+
+  <div id="jobs-updatejob" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">createOrUpdateJob mutation</h2>
+      <p>
+        If a Job is found with the provided <code>name</code> it is updated with the new values,
+        otherwise a Job is created with that name.
+      </p>
+      <p>
+        <h3 class="attributes-title">Arguments</h3>
+        <p>
+          Same as <a href="#jobs-createjob">createJob</a> attributes.
+        </p>
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>mutation {
+  createOrUpdateJob(
+    name: "test-job-1"
+    endpoint: "https://myapp.com/api/sendEmail"
+    verb: "post"
+    runAt: "2020-07-24T22:00:00Z"
+    headers: "{\"Content-Type\": \"application/json\"}"
+    body: "{\"foo\":\"bar\"}"
+  ) {
+    name
+  }
+}</code></pre>
+    </p>
+  </div>
+
+
 </section>
 
           </section>
