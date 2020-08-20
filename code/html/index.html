@@ -2,19 +2,251 @@
 
 <section id="introduction" class="py-16 px-12 border-b">
   <h2 class="text-2xl">Introduction</h2>
-  <p>I'm baby pug put a bird on it gastropub cornhole franzen. 3 wolf moon messenger bag pok pok aesthetic, crucifix microdosing cred cronut tote bag woke mlkshk. Aesthetic shoreditch cliche, tattooed cornhole migas XOXO plaid chillwave biodiesel vape activated charcoal. Freegan PBR&B organic, austin gentrify jean shorts hot chicken butcher kickstarter helvetica blog. Lomo fingerstache affogato succulents hot chicken 90's gentrify chicharrones bespoke celiac.</p>
-  <p>Pickled jianbing artisan small batch wolf, austin pour-over PBR&B butcher XOXO selvage try-hard ramps. Aesthetic actually thundercats organic mlkshk, hell of XOXO scenester distillery man braid tofu. Franzen kickstarter brooklyn, gastropub shoreditch woke gluten-free health goth scenester. Humblebrag salvia typewriter, listicle hella fingerstache blue bottle kale chips butcher wayfarers lyft dreamcatcher polaroid lomo. Yuccie DIY venmo, gochujang pour-over helvetica williamsburg activated charcoal.</p>
+  <p>
+    Repeater.dev lets you execute tasks at a predefined time (or on a recurring basis). Repeater is
+    accessed through a GraphQL API available at https://api.repeater.dev/graphql If you have a
+    client that is capable of doing so, you can issue an introspection query against that endpoint
+    and receive a list of query and mutations that you can perform.
+  </p>
+  <p>
+    A typical workflow with Repeater may look something like:
+  </p>
+  <ol class="list-decimal pl-8">
+    <li>Create an <strong>Application</strong></li>
+    <li>Create one or more <strong>Jobs</strong> to be run in the future</li>
+    <li>At some point after a Job has run, check the <strong>JobResult</strong> to make sure it completed successfully (or if it failed, why?)</li>
+  </ol>
 </section>
 
 <section id="getting-started" class="py-16 px-12 border-b">
-  <h2 class="text-2xl">Getting Started</h2>
-  <p>I'm baby pug put a bird on it gastropub cornhole franzen. 3 wolf moon messenger bag pok pok aesthetic, crucifix microdosing cred cronut tote bag woke mlkshk. Aesthetic shoreditch cliche, tattooed cornhole migas XOXO plaid chillwave biodiesel vape activated charcoal. Freegan PBR&B organic, austin gentrify jean shorts hot chicken butcher kickstarter helvetica blog. Lomo fingerstache affogato succulents hot chicken 90's gentrify chicharrones bespoke celiac.</p>
-  <p>Pickled jianbing artisan small batch wolf, austin pour-over PBR&B butcher XOXO selvage try-hard ramps. Aesthetic actually thundercats organic mlkshk, hell of XOXO scenester distillery man braid tofu. Franzen kickstarter brooklyn, gastropub shoreditch woke gluten-free health goth scenester. Humblebrag salvia typewriter, listicle hella fingerstache blue bottle kale chips butcher wayfarers lyft dreamcatcher polaroid lomo. Yuccie DIY venmo, gochujang pour-over helvetica williamsburg activated charcoal.</p>
+  <div class="md:flex items-start">
+    <div class="md:w-1/2 md:pr-8">
+      <h2 class="text-2xl">Getting Started</h2>
+      <p>
+        Before you can use the API you'll need to create an account at <a href="https://repeater.dev/signup" target="_blank">https://repeater.dev/signup</a> Once
+        you've logged in you'll need to create an <strong>Application</strong> which will serve as the
+        owner of any jobs you create.
+      </p>
+      <p>
+        The random token that's generated along with your Application will
+        serve as your access token for the API.
+      </p>
+    </div>
+    <div class="md:w-1/2 md:pl-8">
+      <p>
+        <img class="screenshot" src="https://user-images.githubusercontent.com/300/90701398-30ede180-e23d-11ea-944f-1257a5ab0556.png" alt="New application form" />
+      </p>
+      <p>
+        <img class="screenshot" src="https://user-images.githubusercontent.com/300/90701431-406d2a80-e23d-11ea-8742-ccd35209bcac.png" alt="Application token" />
+      </p>
+    </div>
 </section>
 
 <section id="authentication" class="py-16 px-12 border-b">
-  <h2 class="text-2xl">Authentication</h2>
-  <p>I'm baby pug put a bird on it gastropub cornhole franzen. 3 wolf moon messenger bag pok pok aesthetic, crucifix microdosing cred cronut tote bag woke mlkshk. Aesthetic shoreditch cliche, tattooed cornhole migas XOXO plaid chillwave biodiesel vape activated charcoal. Freegan PBR&B organic, austin gentrify jean shorts hot chicken butcher kickstarter helvetica blog. Lomo fingerstache affogato succulents hot chicken 90's gentrify chicharrones bespoke celiac.</p>
-  <p>Pickled jianbing artisan small batch wolf, austin pour-over PBR&B butcher XOXO selvage try-hard ramps. Aesthetic actually thundercats organic mlkshk, hell of XOXO scenester distillery man braid tofu. Franzen kickstarter brooklyn, gastropub shoreditch woke gluten-free health goth scenester. Humblebrag salvia typewriter, listicle hella fingerstache blue bottle kale chips butcher wayfarers lyft dreamcatcher polaroid lomo. Yuccie DIY venmo, gochujang pour-over helvetica williamsburg activated charcoal.</p>
+  <div class="section-container">
+    <div class="section-body">
+      <h2 class="text-2xl">Authentication</h2>
+      <p>
+        Once you have the token from your Application you must include that in the header of every
+        GraphQL call in the form of a Bearer token:
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>Authorization: Bearer 8edd2e13df6b840d23b47b0af177a62a</code></pre>
+      </p>
+      <p>
+        <pre><code>curl -X POST \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer 8edd2e13df6b840d23b47b0af177a62a" \
+--data '{ "query": "{ jobs { name } }" }' \
+https://api.repeater.dev/graphql</code></pre>
+      </p>
+    </aside>
+  </div>
 </section>
 
+<section id="applications" class="py-16 px-12 border-b">
+  <div class="section-container">
+    <div class="section-body">
+      <h2 class="text-2xl">Applications</h2>
+      <p>
+        Applications serve as a top-level "container" for your jobs. If you have two deployed
+        webapps that need background job processing, you would an Application for each, each
+        with a unique name.
+      </p>
+      <p>
+        Creating a job also generates a unique token. That token is used to <a href="#authentication">authenticate</a>
+        each GraphQL API request.
+      <p>
+        Currently you can only create Applications and get tokens via the <a href="https://repeater.dev">https://repeater.dev</a> UI.      </p>
+    </div>
+  </div>
+</section>
+
+<section id="jobs" class="py-16 px-12 border-b">
+  <div class="section-container">
+    <div class="section-body">
+      <h2 class="text-2xl">Jobs</h2>
+      <p>
+        Jobs are the main components of Repeater. A Job will contain a URL to hit somewhere
+        on the internet and record the response as a <a href="#job-results">JobResult</a>.
+        Jobs can be run once or on a recurring basis.
+      </p>
+      <p>
+        A Job must have a unique name (unique among its parent Application) which will act as its
+        unique identifier for all query and mutation operations.
+      </p>
+      <p>
+        <h3 class="mt-8 font-medium">Fields</h3>
+        <table class="attributes mt-8">
+          <tbody>
+            <tr>
+              <td>name</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                Unique name for this job
+              </td>
+            </tr>
+            <tr>
+              <td>enabled</td>
+              <td>
+                <span class="block text-xs text-gray-500">(optional, default <code>true</code>)</span>
+                Whether this job is enabled and will run at the specified time(s)
+              </td>
+            </tr>
+            <tr>
+              <td>endpoint</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                The URL that will be requested
+              </td>
+            </tr>
+            <tr>
+              <td>verb</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                The HTTP verb to make the request with. One of GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+              </td>
+            </tr>
+            <tr>
+              <td>headers</td>
+              <td>
+                <span class="block text-xs text-gray-500">(optional)</span>
+                Javascript object containing any headers to set on the request
+              </td>
+            </tr>
+            <tr>
+              <td>body</td>
+              <td>
+                <span class="block text-xs text-gray-500">(optional)</span>
+                Any body to send along with the request
+              </td>
+            </tr>
+            <tr>
+              <td>retryable</td>
+              <td>
+                <span class="block text-xs text-gray-500">(optional, default <code>true</code>)</span>
+                Whether the job should be retried if it fails. If so, the job is tried again on a backoff
+                schedule of N ** 4 seconds, where N is the number of previous attempts. Maximum of 24 retries.
+                If the job is recurring then retrying will follow this schedule, otherwise the next run
+                of a failed job will occur on the regular schedule.
+              </td>
+            </tr>
+            <tr>
+              <td>runAt</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the job should run. For recurring jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
+              </td>
+            </tr>
+            <tr>
+              <td>runEvery</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time.
+              </td>
+            </tr>
+            <tr>
+              <td>createdAt</td>
+              <td>
+                <span class="block text-xs text-gray-500">(read-only)</span>
+                An ISO8601 timestamp of when the job was created.
+              </td>
+            </tr>
+            <tr>
+              <td>updatedAt</td>
+              <td>
+                <span class="block text-xs text-gray-500">(read-only)</span>
+                An ISO8601 timestamp of when the job was last updated (when the job runs this value will be also be updated).
+              </td>
+            </tr>
+            <tr>
+              <td>lastRunAt</td>
+              <td>
+                <span class="block text-xs text-gray-500">(read-only)</span>
+                The last time a Runner for this job was run. Will be <code>null</code> if the job has not run yet.
+              </td>
+            </tr>
+            <tr>
+              <td>nextRunAt</td>
+              <td>
+                <span class="block text-xs text-gray-500">(read-only)</span>
+                An ISO8601 timestamp of when this job will run next. Will be <code>null</code> if the job is not <code>enabled</code> or has already run.
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>// query all jobs
+
+query {
+  jobs {
+    name
+    enabled
+    endpoint
+    verb
+    headers
+    body
+    retryable
+    runAt
+    runEvery
+    createdAt
+    updatedAt
+    lastRunAt
+    nextRunAt
+  }
+}</code></pre>
+      </p>
+      <p>
+        <pre><code>// query single job by name
+
+query {
+  job(name: "test-job-1") {
+    name
+    endpoint
+  }
+}</code></pre>
+      </p>
+      <p>
+        <pre><code>// create a job
+
+mutation {
+  createJob(
+    name: "test-job-1"
+    endpoint: "https://myapp.com/api/sendEmail"
+    verb: "post"
+    runAt: "2020-07-24T22:00:00Z"
+    body: "{\"foo\":\"bar\"}"
+  ) {
+    name
+  }
+}</code></pre>
+        </p>
+    </aside>
+  </div>
+</section>

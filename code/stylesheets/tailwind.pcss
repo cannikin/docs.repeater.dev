@@ -13,5 +13,55 @@
 @tailwind utilities;
 
 p {
-  @apply my-4
+  @apply my-4;
+}
+
+a {
+  @apply text-blue-700 underline;
+}
+
+nav a {
+  @apply text-gray-600 no-underline;
+}
+
+nav li {
+  @apply font-medium;
+}
+
+nav li li {
+  @apply font-normal;
+}
+
+img.screenshot {
+  @apply my-12 border shadow-lg;
+}
+
+pre {
+  @apply text-xs bg-gray-800 text-white p-4 rounded-lg overflow-x-scroll
+}
+
+@screen md {
+  .section-container {
+    @apply flex items-start;
+  }
+
+  .section-body {
+    @apply w-1/2 pr-8;
+  }
+
+  .section-aside {
+    @apply w-1/2 pl-8;
+  }
+}
+
+table.attributes tr {
+  @apply border-b
+}
+
+table.attributes td {
+  @apply p-2 text-sm
+}
+
+table.attributes td:first-child {
+  @apply font-semibold align-top
 }
