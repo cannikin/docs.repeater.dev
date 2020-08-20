@@ -475,7 +475,7 @@ https://api.repeater.dev/graphql</code></pre>
     </p>
   </div>
 
-  <div id="jobs-updatejob" class="subsection-container">
+  <div id="jobs-createorupdatejob" class="subsection-container">
     <div class="section-body">
       <h2 class="text-2xl">createOrUpdateJob mutation</h2>
       <p>
@@ -505,6 +505,38 @@ https://api.repeater.dev/graphql</code></pre>
 }</code></pre>
     </p>
   </div>
+
+  <div id="jobs-deletejob" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">deleteJob mutation</h2>
+      <p>
+        Deletes a job and any pending runners. Note that this also removes any JobResult history.
+      </p>
+      <p>
+        <h3 class="attributes-title">Arguments</h3>
+        <table class="attributes">
+          <tbody>
+            <tr>
+              <td>name</td>
+              <td>
+                <span class="block text-xs text-gray-500">(required)</span>
+                Name of the job
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>mutation {
+  deleteJob(name: "test-job-1") {
+    name
+  }
+}</code></pre>
+    </p>
+  </div>
+
 
 
 </section>
