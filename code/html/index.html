@@ -26,7 +26,7 @@
       <p>
         Before you can use the API you'll need to create an account at <a href="https://repeater.dev/signup" target="_blank">https://repeater.dev/signup</a> Once
         you've logged in you'll need to create an <strong>Application</strong> which will serve as the
-        owner of any jobs you create.
+        owner of any Jobs you create.
       </p>
       <p>
         The random token that's generated along with your Application will
@@ -72,8 +72,8 @@ https://api.repeater.dev/graphql</code></pre>
     <div class="section-body">
       <h2 class="text-2xl">Applications</h2>
       <p>
-        Applications serve as a top-level "container" for your jobs. If you have two deployed
-        webapps that need background job processing, you would an Application for each, each
+        Applications serve as a top-level "container" for your Jobs. If you have two deployed
+        webapps that need scheduled job processing, you would an Application for each, each
         with a unique name.
       </p>
       <p>
@@ -90,7 +90,7 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>name</td>
               <td>
-                Name of the application
+                Name of the Application
               </td>
             </tr>
             <tr>
@@ -108,7 +108,7 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>updatedAt</td>
               <td>
-                When this application was last updated. Creating/updating Jobs for this Application also updates this value.
+                When this Application was last updated. Creating/updating Jobs for this Application also updates this value.
               </td>
             </tr>
             <tr>
@@ -120,7 +120,7 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>scheduledJobsCount</td>
               <td>
-                How many Jobs belonging to this application are scheduled to be run in the future
+                How many Jobs belonging to this Application are scheduled to be run in the future
               </td>
             </tr>
           </tbody>
@@ -163,13 +163,13 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>name</td>
               <td>
-                Unique name for this job
+                Unique name for this Job
               </td>
             </tr>
             <tr>
               <td>enabled</td>
               <td>
-                Whether this job is enabled and will run at the specified time(s)
+                Whether this Job is enabled and will run at the specified time(s)
               </td>
             </tr>
             <tr>
@@ -199,46 +199,46 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>retryable</td>
               <td>
-                Whether the job should be retried if it fails. If so, the job is tried again on a backoff
+                Whether the Job should be retried if it fails. If so, the Job is tried again on a backoff
                 schedule of N ** 4 seconds, where N is the number of previous attempts. Maximum of 24 retries.
-                If the job is recurring then retrying will follow this schedule, otherwise the next run
-                of a failed job will occur on the regular schedule.
+                If the Job is recurring then retrying will follow this schedule, otherwise the next run
+                of a failed Job will occur on the regular schedule.
               </td>
             </tr>
             <tr>
               <td>runAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the job should run. For recurring jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job should run. For recurring Jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
               </td>
             </tr>
             <tr>
               <td>runEvery</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the Job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
               </td>
             </tr>
             <tr>
               <td>createdAt</td>
               <td>
-                An ISO8601 timestamp of when the job was created.
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job was created.
               </td>
             </tr>
             <tr>
               <td>updatedAt</td>
               <td>
-                An ISO8601 timestamp of when the job was last updated (when the job runs this value will be also be updated).
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job was last updated (when the Job runs this value will be also be updated).
               </td>
             </tr>
             <tr>
               <td>lastRunAt</td>
               <td>
-                The last time a Runner for this job was run. Will be <code>null</code> if the job has not run yet.
+                The last time a Runner for this Job was run. Will be <code>null</code> if the Job has not run yet.
               </td>
             </tr>
             <tr>
               <td>nextRunAt</td>
               <td>
-                An ISO8601 timestamp of when this job will run next. Will be <code>null</code> if the job is not <code>enabled</code> or has already run.
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when this Job will run next. Will be <code>null</code> if the Job is not <code>enabled</code> or has already run.
               </td>
             </tr>
             <tr>
@@ -256,13 +256,13 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>application</td>
               <td>
-                Details for the Application this job is attached to. See <a href="#applications-fields">Application fields</a>.
+                Details for the Application this Job is attached to. See <a href="#applications-fields">Application fields</a>.
               </td>
             </tr>
             <tr>
               <td>jobResults</td>
               <td>
-                Details for the JobResults attached to this job. See <a href="#jobresults-fields">JobResult fields</a>.
+                Details for the JobResults attached to this Job. See <a href="#jobresults-fields">JobResult fields</a>.
               </td>
             </tr>
             <tr>
@@ -281,7 +281,7 @@ https://api.repeater.dev/graphql</code></pre>
     <div class="section-body">
       <h2 class="text-2xl">jobs query</h2>
       <p>
-        Returns all jobs for the application used to <a href="#authentication">authenticate</a>.
+        Returns all Jobs for the Application used to <a href="#authentication">authenticate</a>.
       </p>
     </div>
     <aside class="section-aside">
@@ -321,13 +321,12 @@ https://api.repeater.dev/graphql</code></pre>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                Name of the job
+                Name of the Job
               </td>
             </tr>
           </tbody>
         </table>
       </p>
-
     </div>
     <aside class="section-aside">
       <p>
@@ -345,7 +344,7 @@ https://api.repeater.dev/graphql</code></pre>
     <div class="section-body">
       <h2 class="text-2xl">createJob mutation</h2>
       <p>
-        Creates a job. If a value is given for <code>runEvery</code> then the job will
+        Creates a Job. If a value is given for <code>runEvery</code> then the Job will
         run on that recurring schedule. Otherwise it will only run once at <code>runAt</code>
       </p>
       <p>
@@ -356,14 +355,14 @@ https://api.repeater.dev/graphql</code></pre>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                Unique name for this job
+                Unique name for this Job
               </td>
             </tr>
             <tr>
               <td>enabled</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional, default <code>true</code>)</span>
-                Whether this job is enabled and will run at the specified time(s)
+                Whether this Job is enabled and will run at the specified time(s)
               </td>
             </tr>
             <tr>
@@ -398,24 +397,24 @@ https://api.repeater.dev/graphql</code></pre>
               <td>retryable</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional, default <code>true</code>)</span>
-                Whether the job should be retried if it fails. If so, the job is tried again on a backoff
+                Whether the Job should be retried if it fails. If so, the Job is tried again on a backoff
                 schedule of N ** 4 seconds, where N is the number of previous attempts. Maximum of 24 retries.
-                If the job is recurring then retrying will follow this schedule, otherwise the next run
-                of a failed job will occur on the regular schedule.
+                If the Job is recurring then retrying will follow this schedule, otherwise the next run
+                of a failed Job will occur on the regular schedule.
               </td>
             </tr>
             <tr>
               <td>runAt</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the job should run. For recurring jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job should run. For recurring Jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
               </td>
             </tr>
             <tr>
               <td>runEvery</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the Job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
               </td>
             </tr>
           </tbody>
@@ -443,13 +442,13 @@ https://api.repeater.dev/graphql</code></pre>
     <div class="section-body">
       <h2 class="text-2xl">updateJob mutation</h2>
       <p>
-        Updates a job. Any existing runners will be canceled and re-scheduled with the new <code>runAt</code>
+        Updates a Job. Any existing Runners will be canceled and re-scheduled with the new <code>runAt</code>
         and <code>runEvery</code> arguments.
       </p>
       <p>
         Note that you cannot change the name of a Job—updating a Job first looks up the Job by
         the provided <code>name</code> argument and that's the one that is updated. The equivalent
-        of renaming a job would be to to delete the existing one and create a new one with the new name.
+        of renaming a Job would be to to delete the existing one and create a new one with the new name.
       </p>
       <p>
         <h3 class="attributes-title">Arguments</h3>
@@ -510,7 +509,7 @@ https://api.repeater.dev/graphql</code></pre>
     <div class="section-body">
       <h2 class="text-2xl">deleteJob mutation</h2>
       <p>
-        Deletes a job and any pending runners. Note that this also removes any JobResult history.
+        Deletes a Job and any pending Runners. Note that this also removes any JobResult history.
       </p>
       <p>
         <h3 class="attributes-title">Arguments</h3>
@@ -520,7 +519,7 @@ https://api.repeater.dev/graphql</code></pre>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                Name of the job
+                Name of the Job
               </td>
             </tr>
           </tbody>
@@ -536,7 +535,225 @@ https://api.repeater.dev/graphql</code></pre>
 }</code></pre>
     </p>
   </div>
+</section>
 
+<section id="jobresults" class="py-16 px-12 border-b">
+  <div class="section-container">
+    <div class="section-body">
+      <h2 class="text-2xl">JobResults</h2>
+      <p>
+        JobResults are the are the record of what happened when a Job was run. JobResults have
+        their own endpoint, as documented here, but can also be returned as a sub-type of Jobs
+        themselves.
+      </p>
+      <p>
+        <h3 class="attributes-title">Fields</h3>
+        <table class="attributes">
+          <tbody>
+            <tr>
+              <td>status</td>
+              <td>
+                The HTTP status code in the response
+              </td>
+            </tr>
+            <tr>
+              <td>headers</td>
+              <td>
+                Any headers returned with the response
+              </td>
+            </tr>
+            <tr>
+              <td>body</td>
+              <td>
+                Any body in the response
+              </td>
+            </tr>
+            <tr>
+              <td>runAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a>
+                of when the Job was run which created this JobResult. Note that due to Runner backlog this
+                time could be later than the <code>runAt</code> field set on the Job itself.
+              </td>
+            </tr>
+            <tr>
+              <td>run</td>
+              <td>
+                A counter that is incremented every time the parent Job was run
+                (either a recurring Job or a single-run Job that has been updated to run multiple times)
+              </td>
+            </tr>
+            <tr>
+              <td>duration</td>
+              <td>
+                The number of milliseconds it took to receive the response
+              </td>
+            </tr>
+            <tr>
+              <td>createdAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the JobResult was created
+              </td>
+            </tr>
+            <tr>
+              <td>updatedAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the JobResult was last updated
+              </td>
+            </tr>
+            <tr>
+              <td>job</td>
+              <td>
+                Details for the <a href="#jobs">Job</a> this JobResult is attached to.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </div>
+  </div>
 
+  <div id="jobresults-jobresults" class="subsection-container">
+    <div class="section-body">
+      <h2 class="text-2xl">jobResults query</h2>
+      <p>
+        If given the <code>jobName</code> argument, returns all JobResults for that Job.
+        Otherwise returns all JobResults for the Application used to <a href="#authentication">authenticate</a>.
+      </p>
+      <p>
+        <h3 class="attributes-title">Arguments</h3>
+        <table class="attributes">
+          <tbody>
+            <tr>
+              <td>jobName</td>
+              <td>
+                <span class="block text-xs text-gray-500">(optional)</span>
+                Name of a parent Job
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>query {
+  jobResults(jobName: "test-job-1") {
+    status
+    headers
+    body
+    runAt
+    run
+    duration
+    createdAt
+    updatedAt
+  }
+}</code></pre>
+      </p>
+    </aside>
+  </div>
+</section>
 
+<section id="runners" class="py-16 px-12 border-b">
+  <div class="section-container">
+    <div class="section-body">
+      <h2 class="text-2xl">Runners</h2>
+      <p>
+        Runners represent the actual processes that execute your Job. You will only see Runner
+        records for Jobs that are still scheduled to be run in the future.
+      </p>
+      <p>
+        There is no stand-alone Runners query, you can only return Runners as a sub-type of a
+        <a href="#jobs">Jobs</a> query.
+      </p>
+      <p>
+        <h3 class="attributes-title">Fields</h3>
+        <table class="attributes">
+          <tbody>
+            <tr>
+              <td>priority</td>
+              <td>
+                An integer from 0-100 that represents the priority for this Runner. Default is <code>50</code>.
+              </td>
+            </tr>
+            <tr>
+              <td>queue</td>
+              <td>
+                The named queue for this Runner. Default is <code>default</code>
+              </td>
+            </tr>
+            <tr>
+              <td>attempts</td>
+              <td>
+                If a Runner fails this field is incremented with every retry.
+              </td>
+            </tr>
+            <tr>
+              <td>recurring</td>
+              <td>
+                Boolean denoting whether this Runner is scheduled to recur (based on whether the Job has a <code>runEvery</code> value set)
+              </td>
+            </tr>
+            <tr>
+              <td>running</td>
+              <td>
+                Boolean denoting whether the Runner is actively executing
+              </td>
+            </tr>
+            <tr>
+              <td>runAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner is scheduled to execute
+              </td>
+            </tr>
+            <tr>
+              <td>failedAt</td>
+              <td>
+                If the Runner has failed (the endpoint returned a status code of >= 400) and the Job is marked as <code>retryable</code> this will be an <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner last failed
+              </td>
+            </tr>
+            <tr>
+              <td>createdAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner was created
+              </td>
+            </tr>
+            <tr>
+              <td>updatedAt</td>
+              <td>
+                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner was last updated
+              </td>
+            </tr>
+            <tr>
+              <td>job</td>
+              <td>
+                Detail for the attached <a href="#jobs">Job</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+    </div>
+    <aside class="section-aside">
+      <p>
+        <pre><code>query {
+  jobs {
+    name
+    runners {
+      priority
+      queue
+      attempts
+      recurring
+      running
+      runAt
+      failedAt
+      createdAt
+      updatedAt
+    }
+  }
+}</code></pre>
+      </p>
+    </aside>
+
+  </div>
 </section>
