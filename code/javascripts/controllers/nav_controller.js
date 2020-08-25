@@ -4,8 +4,12 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  toggleScreenshot(event) {
-    event.target.nextElementSibling.classList.toggle("hidden");
-    event.preventDefault();
+
+  static get targets() {
+    return ['nav']
+  }
+
+  toggleNav() {
+    this.navTarget.classList.toggle('hidden')
   }
 }
