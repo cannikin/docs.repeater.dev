@@ -15,8 +15,8 @@
   <body class="bg-gray-800 text-gray-700 font-sans antialiased h-full flex flex-col">
     <div id="redwood-app" class="flex-auto">
       <div class="h-full flex flex-col lg:flex-row">
-        <aside class="lg:w-56 border-r px-4 lg:px-8 lg:pb-4 lg:pb-0" data-controller="nav">
-          <div class="md:h-screen overflow-y-auto md:fixed">
+        <aside class="lg:w-56 border-r" data-controller="nav">
+          <div class="lg:h-screen overflow-y-auto lg:fixed lg:w-56">
             <header class="flex items-center justify-between lg:justify-center m-4">
               <a href="/" class="flex items-center no-underline">
                 <div class="w-16">
@@ -30,7 +30,7 @@
                 </div>
                 <span class="text-blue-200 text-xl font-bold ml-2 pt-1">Docs</span>
               </a>
-              <button type="button" class="md:hidden w-8" data-action="nav#toggleNav">
+              <button type="button" class="lg:hidden w-8" data-action="nav#toggleNav">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-full fill-current text-white">
                   <path d="M0 0h24v24H0z" fill="none"/>
                   <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
@@ -41,7 +41,7 @@
           </div>
         </aside>
         <main class="flex-1 bg-white">
-          <header class="hidden md:flex items-center justify-end p-4 border-b">
+          <header class="hidden lg:flex items-center justify-end p-4 border-b">
             <a href="//repeater.dev" class="text-blue-700 text-sm">Login &rarr;</a>
           </header>
           <section class="relative">
