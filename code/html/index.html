@@ -90,37 +90,37 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>name</td>
               <td>
-                Name of the Application
+                <code>String</code> Name of the Application
               </td>
             </tr>
             <tr>
               <td>token</td>
               <td>
-                Used to <a href="#authentication">authenticate</a> GraphQL requests.
+                <code>String</code>Used to <a href="#authentication">authenticate</a> GraphQL requests.
               </td>
             </tr>
             <tr>
               <td>createdAt</td>
               <td>
-                When this Application was created
+                <code>ISO8601 Timestamp</code> When this Application was created
               </td>
             </tr>
             <tr>
               <td>updatedAt</td>
               <td>
-                When this Application was last updated. Creating/updating Jobs for this Application also updates this value.
+                <code>ISO8601 Timestamp</code> When this Application was last updated. Creating/updating Jobs for this Application also updates this value.
               </td>
             </tr>
             <tr>
               <td>jobsCount</td>
               <td>
-                How many total Jobs belong to this Application
+                <code>Integer</code> How many total Jobs belong to this Application
               </td>
             </tr>
             <tr>
               <td>scheduledJobsCount</td>
               <td>
-                How many Jobs belonging to this Application are scheduled to be run in the future
+                <code>Integer</code> How many Jobs belonging to this Application are scheduled to be run in the future
               </td>
             </tr>
           </tbody>
@@ -163,43 +163,43 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>name</td>
               <td>
-                Unique name for this Job
+                <code>String</code> Unique name for this Job
               </td>
             </tr>
             <tr>
               <td>enabled</td>
               <td>
-                Whether this Job is enabled and will run at the specified time(s)
+                <code>Boolean</code> Whether this Job is enabled and will run at the specified time(s)
               </td>
             </tr>
             <tr>
               <td>endpoint</td>
               <td>
-                The URL that will be requested
+                <code>String</code> The URL that will be requested
               </td>
             </tr>
             <tr>
               <td>verb</td>
               <td>
-                The HTTP verb to make the request with. One of GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+                <code>String</code> The HTTP verb to make the request with. One of GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
               </td>
             </tr>
             <tr>
               <td>headers</td>
               <td>
-                Javascript object containing any headers to set on the request
+                <code>String</code> Javascript object containing any headers to set on the request
               </td>
             </tr>
             <tr>
               <td>body</td>
               <td>
-                Any body to send along with the request
+                <code>String</code> Any body to send along with the request
               </td>
             </tr>
             <tr>
               <td>retryable</td>
               <td>
-                Whether the Job should be retried if it fails. If so, the Job is tried again on a backoff
+                <code>Boolean</code> Whether the Job should be retried if it fails. If so, the Job is tried again on a backoff
                 schedule of N ** 4 seconds, where N is the number of previous attempts. Maximum of 24 retries.
                 If the Job is recurring then retrying will follow this schedule, otherwise the next run
                 of a failed Job will occur on the regular schedule.
@@ -208,67 +208,67 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>runAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job should run. For recurring Jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job should run. For recurring Jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
               </td>
             </tr>
             <tr>
               <td>runEvery</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the Job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
+                <code>ISO8601 Duration</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the Job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
               </td>
             </tr>
             <tr>
               <td>createdAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job was created.
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job was created.
               </td>
             </tr>
             <tr>
               <td>updatedAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job was last updated (when the Job runs this value will be also be updated).
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job was last updated (when the Job runs this value will be also be updated).
               </td>
             </tr>
             <tr>
               <td>lastRunAt</td>
               <td>
-                The last time a Runner for this Job was run. Will be <code>null</code> if the Job has not run yet.
+                <code>ISO8601 Timestamp</code> The last time a Runner for this Job was run. Will be <code>null</code> if the Job has not run yet.
               </td>
             </tr>
             <tr>
               <td>nextRunAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when this Job will run next. Will be <code>null</code> if the Job is not <code>enabled</code> or has already run.
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when this Job will run next. Will be <code>null</code> if the Job is not <code>enabled</code> or has already run.
               </td>
             </tr>
             <tr>
               <td>successCount</td>
               <td>
-                If any JobResults are present, the count that were successes (HTTP response code < 400)
+                <code>Integer</code> If any JobResults are present, the count that were successes (HTTP response code < 400)
               </td>
             </tr>
             <tr>
               <td>failureCount</td>
               <td>
-                If any JobResults are present, the count that were failures (HTTP response code >= 400)
+                <code>Integer</code> If any JobResults are present, the count that were failures (HTTP response code >= 400)
               </td>
             </tr>
             <tr>
               <td>application</td>
               <td>
-                Details for the Application this Job is attached to. See <a href="#applications-fields">Application fields</a>.
+                <code>Application</code> Details for the Application this Job is attached to. See <a href="#applications-fields">Application fields</a>.
               </td>
             </tr>
             <tr>
               <td>jobResults</td>
               <td>
-                Details for the JobResults attached to this Job. See <a href="#jobresults-fields">JobResult fields</a>.
+                <code>[JobResult]</code> Details for the JobResults attached to this Job. See <a href="#jobresults-fields">JobResult fields</a>.
               </td>
             </tr>
             <tr>
               <td>runners</td>
               <td>
-                Any Runners that are scheduled to run. See <a href="#runners-fields">Runner fields</a>.
+                <code>[Runner]</code> Any Runners that are scheduled to run. See <a href="#runners-fields">Runner fields</a>.
               </td>
             </tr>
           </tbody>
@@ -321,7 +321,7 @@ https://api.repeater.dev/graphql</code></pre>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                Name of the Job
+                <code>String</code> Name of the Job
               </td>
             </tr>
           </tbody>
@@ -355,49 +355,49 @@ https://api.repeater.dev/graphql</code></pre>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                Unique name for this Job
+                <code>String</code> Unique name for this Job
               </td>
             </tr>
             <tr>
               <td>enabled</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional, default <code>true</code>)</span>
-                Whether this Job is enabled and will run at the specified time(s)
+                <code>Boolean</code> Whether this Job is enabled and will run at the specified time(s)
               </td>
             </tr>
             <tr>
               <td>endpoint</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                The URL to request
+                <code>String</code> The URL to request
               </td>
             </tr>
             <tr>
               <td>verb</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                The HTTP verb to make the request with. One of GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+                <code>String</code> The HTTP verb to make the request with. One of GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
               </td>
             </tr>
             <tr>
               <td>headers</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                Any headers to send along with the request. Use stringified JSON, ie. <code>"{\"Content-Type\": \"application/json\"}"</code>
+                <code>String</code> Any headers to send along with the request. Use stringified JSON, ie. <code>"{\"Content-Type\": \"application/json\"}"</code>
               </td>
             </tr>
             <tr>
               <td>body</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                Body content to send along with the request. If JSON, make sure to set a <code>Content-Type</code> header and stringify the body JSON.
+                <code>String</code> Body content to send along with the request. If JSON, make sure to set a <code>Content-Type</code> header and stringify the body JSON.
               </td>
             </tr>
             <tr>
               <td>retryable</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional, default <code>true</code>)</span>
-                Whether the Job should be retried if it fails. If so, the Job is tried again on a backoff
+                <code>Boolean</code> Whether the Job should be retried if it fails. If so, the Job is tried again on a backoff
                 schedule of N ** 4 seconds, where N is the number of previous attempts. Maximum of 24 retries.
                 If the Job is recurring then retrying will follow this schedule, otherwise the next run
                 of a failed Job will occur on the regular schedule.
@@ -407,14 +407,14 @@ https://api.repeater.dev/graphql</code></pre>
               <td>runAt</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job should run. For recurring Jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Job should run. For recurring Jobs, this is the time of the first run. <span class="whitespace-no-wrap">Ex: <code>2020-08-22T12:34:56Z</code></span>
               </td>
             </tr>
             <tr>
               <td>runEvery</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the Job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
+                <code>ISO8601 Duration</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Durations">ISO8601 duration</a> of the recurring schedule for the Job. Ex: <code>P1D</code> would run once per day, starting at the <code>runAt</code> time. If <code>null</code> then the Job will only run once at the <code>runAt</code> time.
               </td>
             </tr>
           </tbody>
@@ -519,7 +519,7 @@ https://api.repeater.dev/graphql</code></pre>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
-                Name of the Job
+                <code>String</code> Name of the Job
               </td>
             </tr>
           </tbody>
@@ -553,25 +553,25 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>status</td>
               <td>
-                The HTTP status code in the response
+                <code>Integer</code> The HTTP status code in the response
               </td>
             </tr>
             <tr>
               <td>headers</td>
               <td>
-                Any headers returned with the response
+                <code>String</code> Any headers returned with the response
               </td>
             </tr>
             <tr>
               <td>body</td>
               <td>
-                Any body in the response
+                <code>String</code> Any body in the response
               </td>
             </tr>
             <tr>
               <td>runAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a>
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a>
                 of when the Job was run which created this JobResult. Note that due to Runner backlog this
                 time could be later than the <code>runAt</code> field set on the Job itself.
               </td>
@@ -579,32 +579,32 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>run</td>
               <td>
-                A counter that is incremented every time the parent Job was run
+                <code>Integer</code> A counter that is incremented every time the parent Job was run
                 (either a recurring Job or a single-run Job that has been updated to run multiple times)
               </td>
             </tr>
             <tr>
               <td>duration</td>
               <td>
-                The number of milliseconds it took to receive the response
+                <code>Integer</code> The number of milliseconds it took to receive the response
               </td>
             </tr>
             <tr>
               <td>createdAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the JobResult was created
+                <code>ISO8601 Timestamp</code> n <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the JobResult was created
               </td>
             </tr>
             <tr>
               <td>updatedAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the JobResult was last updated
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the JobResult was last updated
               </td>
             </tr>
             <tr>
               <td>job</td>
               <td>
-                Details for the <a href="#jobs">Job</a> this JobResult is attached to.
+                <code>Job</code> Details for the <a href="#jobs">Job</a> this JobResult is attached to.
               </td>
             </tr>
           </tbody>
@@ -628,7 +628,7 @@ https://api.repeater.dev/graphql</code></pre>
               <td>jobName</td>
               <td>
                 <span class="block text-xs text-gray-500">(optional)</span>
-                Name of a parent Job
+                <code>String</code> Name of a parent Job
               </td>
             </tr>
           </tbody>
@@ -673,61 +673,61 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>priority</td>
               <td>
-                An integer from 0-100 that represents the priority for this Runner. Default is <code>50</code>.
+                <code>Integer</code> Number ranging from 0-100 that represents the priority for this Runner, lower numbers have higher priority. Default is <code>50</code>.
               </td>
             </tr>
             <tr>
               <td>queue</td>
               <td>
-                The named queue for this Runner. Default is <code>default</code>
+                <code>String</code> The named queue for this Runner. Default is <code>default</code>
               </td>
             </tr>
             <tr>
               <td>attempts</td>
               <td>
-                If a Runner fails this field is incremented with every retry.
+                <code>Integer</code> If a Runner fails this field is incremented with every retry.
               </td>
             </tr>
             <tr>
               <td>recurring</td>
               <td>
-                Boolean denoting whether this Runner is scheduled to recur (based on whether the Job has a <code>runEvery</code> value set)
+                <code>Boolean</code> Denotes whether this Runner is scheduled to recur (based on whether the Job has a <code>runEvery</code> value set)
               </td>
             </tr>
             <tr>
               <td>running</td>
               <td>
-                Boolean denoting whether the Runner is actively executing
+                <code>Boolean</code> Denotes whether the Runner is actively executing
               </td>
             </tr>
             <tr>
               <td>runAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner is scheduled to execute
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner is scheduled to execute
               </td>
             </tr>
             <tr>
               <td>failedAt</td>
               <td>
-                If the Runner has failed (the endpoint returned a status code of >= 400) and the Job is marked as <code>retryable</code> this will be an <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner last failed
+                <code>ISO8601 Timestamp</code> If the Runner has failed (the endpoint returned a status code of >= 400) and the Job is marked as <code>retryable</code> this will be an <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner last failed
               </td>
             </tr>
             <tr>
               <td>createdAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner was created
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner was created
               </td>
             </tr>
             <tr>
               <td>updatedAt</td>
               <td>
-                An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner was last updated
+                <code>ISO8601 Timestamp</code> An <a href="https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations">ISO8601 timestamp</a> of when the Runner was last updated
               </td>
             </tr>
             <tr>
               <td>job</td>
               <td>
-                Detail for the attached <a href="#jobs">Job</a>
+                <code>Job</code> Detail for the attached <a href="#jobs">Job</a>
               </td>
             </tr>
           </tbody>
