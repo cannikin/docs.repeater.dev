@@ -15,7 +15,7 @@
   <body class="bg-gray-800 text-gray-700 font-sans antialiased h-full flex flex-col">
     <div id="redwood-app" class="flex-auto">
       <div class="h-full flex flex-col lg:flex-row">
-        <aside class="lg:w-56 border-r" data-controller="nav">
+        <aside class="flex-none lg:w-56" data-controller="nav">
           <div class="lg:h-screen overflow-y-auto lg:fixed lg:w-56">
             <header class="flex items-center justify-between lg:justify-center m-4">
               <a href="/" class="flex items-center no-underline">
@@ -40,7 +40,7 @@
             @@include("nav")
           </div>
         </aside>
-        <main class="flex-1 bg-white">
+        <main class="bg-white">
           <header class="hidden lg:flex items-center justify-end p-4 border-b">
             <a href="//repeater.dev" class="text-blue-700 text-sm">Login &rarr;</a>
           </header>
