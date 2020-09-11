@@ -49,7 +49,11 @@
       <h2 class="text-2xl">Authentication</h2>
       <p>
         Once you have the token from your Application you must include that in the header of every
-        GraphQL call in the form of a Bearer token:
+        GraphQL call in the form of a Bearer token.
+      </p>
+      <p>
+        If you are using the <a href="">repeaterdev-js</a> library you create a new instance using
+        your token as the first argument.
       </p>
     </div>
     <aside class="section-aside">
@@ -62,6 +66,9 @@
 -H "Authorization: Bearer 8edd2e13df6b840d23b47b0af177a62a" \
 --data '{ "query": "{ jobs { name } }" }' \
 https://api.repeater.dev/graphql</code></pre>
+      </p>
+      <p>
+        <pre><code>const repeater = new Repeater('8edd2e13df6b840d23b47b0af177a62a')</code></pre>
       </p>
     </aside>
   </div>
@@ -304,6 +311,9 @@ https://api.repeater.dev/graphql</code></pre>
   }
 }</code></pre>
       </p>
+      <p>
+        <pre><code>const jobs = await repeater.jobs()</code></pre>
+      </p>
     </aside>
   </div>
 
@@ -336,6 +346,9 @@ https://api.repeater.dev/graphql</code></pre>
     endpoint
   }
 }</code></pre>
+      </p>
+      <p>
+        <pre><code>const jobs = await repeater.job('test-job-1')</code></pre>
       </p>
     </aside>
   </div>
@@ -436,6 +449,16 @@ https://api.repeater.dev/graphql</code></pre>
   }
 }</code></pre>
     </p>
+    <p>
+      <pre><code>const job = await repeater.enqueue({
+  name: "test-job-1"
+  endpoint: "https://myapp.com/api/sendEmail"
+  verb: "post"
+  runAt: new Date,
+  headers: { 'Content-Type': 'application/json' }
+  json: { foo: 'bar' }
+})</code></pre>
+    </p>
   </div>
 
   <div id="jobs-updatejob" class="subsection-container">
@@ -462,15 +485,17 @@ https://api.repeater.dev/graphql</code></pre>
         <pre><code>mutation {
   updateJob(
     name: "test-job-1"
-    endpoint: "https://myapp.com/api/sendEmail"
-    verb: "post"
-    runAt: "2020-07-24T22:00:00Z"
-    headers: "{\"Content-Type\": \"application/json\"}"
-    body: "{\"foo\":\"bar\"}"
+    verb: "get"
   ) {
     name
   }
 }</code></pre>
+      </p>
+      <p>
+        <pre><code>const job = await repeater.job('test-job-1')
+await job.update({
+  verb: "get"
+})</code></pre>
       </p>
     </aside>
   </div>
@@ -535,6 +560,10 @@ https://api.repeater.dev/graphql</code></pre>
     name
   }
 }</code></pre>
+      </p>
+      <p>
+        <pre><code>const job = await repeater.job('test-job-1')
+await job.delete()</code></pre>
       </p>
     </aside>
   </div>
@@ -652,6 +681,10 @@ https://api.repeater.dev/graphql</code></pre>
     updatedAt
   }
 }</code></pre>
+      </p>
+      <p>
+        <pre><code>const job = await repeater.job('test-job-1')
+const results = await job.results()</code></pre>
       </p>
     </aside>
   </div>
