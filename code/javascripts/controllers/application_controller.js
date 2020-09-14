@@ -7,10 +7,11 @@ export default class extends Controller {
     return ['code']
   }
 
-  connect() {
+  initialize() {
     hljs.registerLanguage("graphql", hljsDefineGraphQL);
-    this.codeTargets.forEach((target) => {
-      hljs.highlightBlock(target)
-    })
+  }
+
+  connect() {
+    this.codeTargets.forEach(target => hljs.highlightBlock(target))
   }
 }
