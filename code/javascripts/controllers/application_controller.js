@@ -1,5 +1,5 @@
 import { Controller } from "stimulus";
-import hljs from 'highlight.js'
+import hljs from '../highlight.pack'
 import hljsDefineGraphQL from '../highlight.graphql'
 
 export default class extends Controller {
@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
-    hljs.registerLanguage("graphql",hljsDefineGraphQL);
+    hljs.registerLanguage("graphql", hljsDefineGraphQL);
     this.codeTargets.forEach((target) => {
       hljs.highlightBlock(target)
     })
