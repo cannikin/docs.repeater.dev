@@ -73,7 +73,7 @@
 https://api.repeater.dev/graphql</code></pre>
       </p>
       <p>
-        <pre><code>const repeater = new Repeater('8edd2e13df6b840d23b47b0af177a62a')</code></pre>
+        <pre><code class="language-javascript" data-target="application.code">const repeater = new Repeater('8edd2e13df6b840d23b47b0af177a62a')</code></pre>
       </p>
     </aside>
   </div>
@@ -141,14 +141,15 @@ https://api.repeater.dev/graphql</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>query {
+        <pre><code class="language-graphql" data-target="application.code">query {
   jobs {
     name
     application {
       name
       token
     }
-  }</code></pre>
+  }
+}</code></pre>
       </p>
     </aside>
 
@@ -298,7 +299,7 @@ https://api.repeater.dev/graphql</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>query {
+        <pre><code class="language-graphql" data-target="application.code">query {
   jobs {
     name
     enabled
@@ -317,7 +318,7 @@ https://api.repeater.dev/graphql</code></pre>
 }</code></pre>
       </p>
       <p>
-        <pre><code>const jobs = await repeater.jobs()</code></pre>
+        <pre><code class="language-javascript" data-target="application.code">const jobs = await repeater.jobs()</code></pre>
       </p>
     </aside>
   </div>
@@ -345,7 +346,7 @@ https://api.repeater.dev/graphql</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>query {
+        <pre><code class="language-graphql" data-target="application.code">query {
   job(name: "test-job-1") {
     name
     endpoint
@@ -353,7 +354,7 @@ https://api.repeater.dev/graphql</code></pre>
 }</code></pre>
       </p>
       <p>
-        <pre><code>const jobs = await repeater.job('test-job-1')</code></pre>
+        <pre><code class="language-javascript" data-target="application.code">const jobs = await repeater.job('test-job-1')</code></pre>
       </p>
     </aside>
   </div>
@@ -441,7 +442,7 @@ https://api.repeater.dev/graphql</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>mutation {
+        <pre><code class="language-graphql" data-target="application.code">mutation {
   createJob(
     name: "test-job-1"
     endpoint: "https://myapp.com/api/sendEmail"
@@ -455,7 +456,7 @@ https://api.repeater.dev/graphql</code></pre>
 }</code></pre>
     </p>
     <p>
-      <pre><code>const job = await repeater.enqueue({
+      <pre><code class="language-javascript" data-target="application.code">const job = await repeater.enqueue({
   name: "test-job-1"
   endpoint: "https://myapp.com/api/sendEmail"
   verb: "post"
@@ -487,7 +488,7 @@ https://api.repeater.dev/graphql</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>mutation {
+        <pre><code class="language-graphql" data-target="application.code">mutation {
   updateJob(
     name: "test-job-1"
     verb: "get"
@@ -497,7 +498,7 @@ https://api.repeater.dev/graphql</code></pre>
 }</code></pre>
       </p>
       <p>
-        <pre><code>const job = await repeater.job('test-job-1')
+        <pre><code class="language-javascript" data-target="application.code">const job = await repeater.job('test-job-1')
 await job.update({
   verb: "get"
 })</code></pre>
@@ -521,7 +522,7 @@ await job.update({
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>mutation {
+        <pre><code class="language-graphql" data-target="application.code">mutation {
   createOrUpdateJob(
     name: "test-job-1"
     endpoint: "https://myapp.com/api/sendEmail"
@@ -535,7 +536,7 @@ await job.update({
 }</code></pre>
       </p>
       <p>
-        <pre><code>const job = await repeater.enqueueOrUpdate({
+        <pre><code class="language-javascript" data-target="application.code">const job = await repeater.enqueueOrUpdate({
   name: "test-job-1"
   endpoint: "https://myapp.com/api/sendEmail"
   verb: "post"
@@ -571,14 +572,14 @@ await job.update({
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>mutation {
+        <pre><code class="language-graphql" data-target="application.code">mutation {
   deleteJob(name: "test-job-1") {
     name
   }
 }</code></pre>
       </p>
       <p>
-        <pre><code>const job = await repeater.job('test-job-1')
+        <pre><code class="language-javascript" data-target="application.code">const job = await repeater.job('test-job-1')
 await job.delete()</code></pre>
       </p>
     </aside>
@@ -685,7 +686,7 @@ await job.delete()</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>query {
+        <pre><code class="language-graphql" data-target="application.code">query {
   jobResults(jobName: "test-job-1") {
     status
     headers
@@ -699,7 +700,7 @@ await job.delete()</code></pre>
 }</code></pre>
       </p>
       <p>
-        <pre><code>const job = await repeater.job('test-job-1')
+        <pre><code class="language-javascript" data-target="application.code">const job = await repeater.job('test-job-1')
 const results = await job.results()</code></pre>
       </p>
     </aside>
@@ -788,7 +789,7 @@ const results = await job.results()</code></pre>
     </div>
     <aside class="section-aside">
       <p>
-        <pre><code>query {
+        <pre><code class="language-graphql" data-target="application.code">query {
   jobs {
     name
     runners {

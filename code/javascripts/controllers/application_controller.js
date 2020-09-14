@@ -1,18 +1,16 @@
-// See https://cameronjs.com/stimulus for more info
-
 import { Controller } from "stimulus";
+import hljs from 'highlight.js'
+import hljsDefineGraphQL from '../highlight.graphql'
 
 export default class extends Controller {
+  static get targets() {
+    return ['code']
+  }
+
   connect() {
-    console.log(`
-                    Welcome to
-            ┌─┐┌─┐┌┬┐┌─┐┬─┐┌─┐┌┐┌ ╦╔═╗
-            │  ├─┤│││├┤ ├┬┘│ ││││ ║╚═╗
-            └─┘┴ ┴┴ ┴└─┘┴└─└─┘┘└┘╚╝╚═╝
-
-                    Find me in
-code/javascripts/controllers/application_controller.js
-
-    `);
+    hljs.registerLanguage("graphql",hljsDefineGraphQL);
+    this.codeTargets.forEach((target) => {
+      hljs.highlightBlock(target)
+    })
   }
 }
