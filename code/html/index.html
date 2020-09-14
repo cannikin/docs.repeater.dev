@@ -534,6 +534,17 @@ await job.update({
   }
 }</code></pre>
       </p>
+      <p>
+        <pre><code>const job = await repeater.enqueueOrUpdate({
+  name: "test-job-1"
+  endpoint: "https://myapp.com/api/sendEmail"
+  verb: "post"
+  runAt: new Date,
+  headers: { 'Content-Type': 'application/json' }
+  json: { foo: 'bar' }
+})</code></pre>
+      </p>
+
     </aside>
   </div>
 
