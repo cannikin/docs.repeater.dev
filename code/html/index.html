@@ -371,6 +371,13 @@ https://api.repeater.dev/graphql</code></pre>
         <table class="attributes">
           <tbody>
             <tr>
+              <td>applicationName</td>
+              <td>
+                <span class="block text-xs text-gray-500">(optional)</span>
+                <code>String</code> The name of the Application to create this job for. If <code>null</code> then it uses whatever Application token was used when <a href="#authentication">authenticating</a>.
+              </td>
+            </tr>
+            <tr>
               <td>name</td>
               <td>
                 <span class="block text-xs text-gray-500">(required)</span>
@@ -512,6 +519,9 @@ await job.update({
       <p>
         If a Job is found with the provided <code>name</code> it is updated with the new values,
         otherwise a Job is created with that name.
+      </p>
+      <p>
+        Note that you cannot change the application that a job is tied to. If you provide the <code>applicationName</code> attribute, it will only be used to lookup an existing Job.
       </p>
       <p>
         <h3 class="attributes-title">Arguments</h3>
