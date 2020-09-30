@@ -188,7 +188,7 @@ https://api.repeater.dev/graphql</code></pre>
             <tr>
               <td>endpoint</td>
               <td>
-                <code>String</code> The URL that will be requested
+                <code>String</code> The URL that will be requested. The request engine will follow redirects (3XX status codes) until a 2XX or 4XX-5XX code is returned.
               </td>
             </tr>
             <tr>
